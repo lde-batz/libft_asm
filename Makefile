@@ -6,7 +6,7 @@
 #    By: lde-batz <lde-batz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/25 20:50:34 by lde-batz          #+#    #+#              #
-#    Updated: 2020/08/26 12:02:40 by lde-batz         ###   ########.fr        #
+#    Updated: 2020/10/15 16:06:34 by lde-batz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,14 @@ COL_VIOLET	= \033[1;35m
 COL_CYAN	= \033[1;36m
 COL_WHITE	= \033[1;37m
 
-NAME :=	libfts.a
+NAME :=	libasm.a
 
-SRC :=	ft_bzero.s \
+SRC :=	ft_strlen.s \
+		ft_strcpy.s \
+		ft_strcmp.s \
+		ft_write.s \
+		ft_read.s \
+		ft_bzero.s \
 		ft_tolower.s \
 		ft_toupper.s \
 
@@ -36,7 +41,7 @@ OBJDIR := 	obj
 OBJP :=		$(addprefix $(OBJDIR)/, $(SRC:.s=.o))
 ONLYDIR :=	$(foreach dir, $(OBJP), $(shell dirname $(dir)))
 
-FLAG :=	-f elf64
+FLAG :=	-f macho64
 CC :=	nasm $(FLAG)
 
 TOTAL_FILES := $(shell echo $(SRC) | wc -w | sed -e 's/ //g')
@@ -47,23 +52,33 @@ CURRENT_FILES = $(shell ls $(PWD)/obj/ 2> /dev/null | wc -l | sed -e 's/ //g')
 all : $(NAME)
 
 $(NAME) : $(OBJP)
-	ar rc $(NAME) $(OBJP)
-	ranlib $(NAME)
-	echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Finished compilation. Output file : $(COL_VIOLET)$(PWD)/$(NAME)$(COL_END)"
+	@ar rc $(NAME) $(OBJP)
+	@ranlib $(NAME)
+	@echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Finished compilation. Output file : $(COL_VIOLET)$(PWD)/$(NAME)$(COL_END)"
 
 $(OBJDIR)/%.o: %.s libfts.h
-	mkdir -p $(ONLYDIR)
-	$(CC) $< -o $@
-	echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"
+	@mkdir -p $(ONLYDIR)
+	@$(CC) $< -o $@
+	@echo "$(CLEAR_LINE)$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Compiling file [$(COL_VIOLET)$<$(COL_YELLOW)]. ($(CURRENT_FILES) / $(TOTAL_FILES))$(COL_END)$(BEGIN_LINE)"
 
 clean :
-	rm -rf $(OBJDIR)
-	echo "$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Removed $(COL_VIOLET)compiled objects.$(COL_END)"
+	@rm -rf $(OBJDIR)
+	@echo "$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Removed $(COL_VIOLET)compiled objects.$(COL_END)"
 
 fclean : clean
-	rm -rf $(NAME)
-	echo "$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Removed $(COL_VIOLET)$(NAME)$(COL_END)"
+	@rm -rf $(NAME)
+	@echo "$(COL_BLUE)[$(NAME)] $(COL_YELLOW)Removed $(COL_VIOLET)$(NAME)$(COL_END)"
 
 re : fclean all
+
+main : $(NAME)
+	gcc -Wall -Wextra main.c -I libfts.h -L ./ -lasm -o main_test
+
+main2 : $(NAME)
+	gcc -Wall -Wextra main2.c -I libfts.h -L ./ -lasm -o main_test
+
+
+mclean :
+	rm -rf main_test
 
 .PHONY: all clean fclean re

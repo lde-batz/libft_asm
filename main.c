@@ -14,6 +14,146 @@ int			main(void)
 	int		i;
 	size_t	c;
 
+	/* FT_STRLEN */
+	printf("*************** FT_STRLEN ***************\n");
+	char	str_len[100] = "";
+	if (ft_strlen(str_len) != strlen(str_len))
+	{
+		printf("ft_strlen error1:  %zu   |   %lu\n", ft_strlen(str_len), strlen(str_len));
+		c++;
+	}
+	char	str_len1[100] = "Hello world !";
+	if (ft_strlen(str_len1) != strlen(str_len1))
+	{
+		printf("ft_strlen error2:  %zu   |   %lu\n", ft_strlen(str_len1), strlen(str_len1));
+		c++;
+	}
+	char	str_len2[100] = "Hello worldidjhgdfhdjfkljgfherkjfhe !";
+	if (ft_strlen(str_len2) != strlen(str_len2))
+	{
+		printf("ft_strlen error3:  %zu   |   %lu\n", ft_strlen(str_len2), strlen(str_len2));
+		c++;
+	}
+	char	str_len3[100] = "Hello worldkjhrfblre\n\tskjhfgrfhghjefbferjbfqbfefb  hbfqfb fhb rf jf !";
+	if (ft_strlen(str_len3) != strlen(str_len3))
+	{
+		printf("ft_strlen error4:  %zu   |   %lu\n", ft_strlen(str_len3), strlen(str_len3));
+		c++;
+	}
+	if (!c)
+       printf("ft_strlen: OK !\n\n");
+
+
+		/* FT_STRCPY */
+	printf("*************** FT_STRCPY ***************\n");
+	c = 0;
+	char	cpy_src[100] = "jfhgejrfgjehrfgj";
+	char	*ft_cpy_dest = malloc(sizeof(char) * 100);
+	char	*cpy_dest = malloc(sizeof(char) * 100);
+	bzero(ft_cpy_dest, 100);
+	bzero(cpy_dest, 100);
+	if (strcmp(ft_strcpy(ft_cpy_dest, cpy_src), strcpy(cpy_dest, cpy_src)) != 0)
+	{
+		printf("ft_strcpy error1:  \"%s\"   |   \"%s\"\n", ft_strcpy(ft_cpy_dest, cpy_src), strcpy(cpy_dest, cpy_src));
+		c++;
+	}
+	if (strcmp(ft_cpy_dest, cpy_dest) != 0)
+	{
+		printf("ft_strcpy error2:  \"%s\"   |   \"%s\"\n", ft_cpy_dest, cpy_dest);
+		c++;
+	}
+	char	cpy_src2[100] = "";
+	bzero(ft_cpy_dest, 100);
+	bzero(cpy_dest, 100);
+	if (strcmp(ft_strcpy(ft_cpy_dest, cpy_src2), strcpy(cpy_dest, cpy_src2)) != 0)
+	{
+		printf("ft_strcpy error3:  \"%s\"   |   \"%s\"\n", ft_strcpy(ft_cpy_dest, cpy_src2), strcpy(cpy_dest, cpy_src2));
+		c++;
+	}
+	if (strcmp(ft_cpy_dest, cpy_dest) != 0)
+	{
+		printf("ft_strcpy error4:  \"%s\"   |   \"%s\"\n", ft_cpy_dest, cpy_dest);
+		c++;
+	}
+	char	cpy_src3[100] = "wjesvhbrhjv\tn\neriufhrfherjherh\\erjhfgegfbf";
+	bzero(ft_cpy_dest, 100);
+	bzero(cpy_dest, 100);
+	if (strcmp(ft_strcpy(ft_cpy_dest, cpy_src3), strcpy(cpy_dest, cpy_src3)) != 0)
+	{
+		printf("ft_strcpy error5:  \"%s\"   |   \"%s\"\n", ft_strcpy(ft_cpy_dest, cpy_src3), strcpy(cpy_dest, cpy_src3));
+		c++;
+	}
+	if (strcmp(ft_cpy_dest, cpy_dest) != 0)
+	{
+		printf("ft_strcpy error6:  \"%s\"   |   \"%s\"\n", ft_cpy_dest, cpy_dest);
+		c++;
+	}
+	if (!c)
+       printf("ft_strcpy: OK !\n\n");
+
+		/* FT_STRCMP */
+	printf("*************** FT_STRCMP ***************\n");
+	c = 0;
+	char	*cmp1 = malloc(sizeof(char) * 100);
+	char	*cmp2 = malloc(sizeof(char) * 100);
+	bzero(cmp1, 100);
+	bzero(cmp2, 100);
+	sprintf(cmp1, "");
+	sprintf(cmp2, "");
+	if (ft_strcmp(cmp1, cmp2) != strcmp(cmp1, cmp2))
+	{
+		printf("ft_strcmp error1:  %i   |   %i\n", ft_strcmp(cmp1, cmp2), strcmp(cmp1, cmp2));
+		c++;
+	}
+	bzero(cmp1, 100);
+	bzero(cmp2, 100);
+	sprintf(cmp1, "");
+	sprintf(cmp2, "rththvrvhgvgc");
+	if (ft_strcmp(cmp1, cmp2) != strcmp(cmp1, cmp2))
+	{
+		printf("ft_strcmp error2:  %i   |   %i\n", ft_strcmp(cmp1, cmp2), strcmp(cmp1, cmp2));
+		c++;
+	}
+	bzero(cmp1, 100);
+	bzero(cmp2, 100);
+	sprintf(cmp1, "cwgwhehyrhyjuterc");
+	sprintf(cmp2, "");
+	if (ft_strcmp(cmp1, cmp2) != strcmp(cmp1, cmp2))
+	{
+		printf("ft_strcmp error3:  %i   |   %i\n", ft_strcmp(cmp1, cmp2), strcmp(cmp1, cmp2));
+		c++;
+	}
+	bzero(cmp1, 100);
+	bzero(cmp2, 100);
+	sprintf(cmp1, "dskclguhrw");
+	sprintf(cmp2, "dskclguhrw");
+	if (ft_strcmp(cmp1, cmp2) != strcmp(cmp1, cmp2))
+	{
+		printf("ft_strcmp error4:  %i   |   %i\n", ft_strcmp(cmp1, cmp2), strcmp(cmp1, cmp2));
+		c++;
+	}
+	bzero(cmp1, 100);
+	bzero(cmp2, 100);
+	sprintf(cmp1, "cdgrrhtgyhrtcg");
+	sprintf(cmp2, "cdgrrhtgyrtcg");
+	if (ft_strcmp(cmp1, cmp2) != strcmp(cmp1, cmp2))
+	{
+		printf("ft_strcmp error5:  %i   |   %i\n", ft_strcmp(cmp1, cmp2), strcmp(cmp1, cmp2));
+		c++;
+	}
+	bzero(cmp1, 100);
+	bzero(cmp2, 100);
+	sprintf(cmp1, "cd\tgr\nrhtgyhrtcg");
+	sprintf(cmp2, "cd\tgr\nrhtgyrtcg");
+	if (ft_strcmp(cmp1, cmp2) != strcmp(cmp1, cmp2))
+	{
+		printf("ft_strcmp error6:  %i   |   %i\n", ft_strcmp(cmp1, cmp2), strcmp(cmp1, cmp2));
+		c++;
+	}
+	if (!c)
+       printf("ft_strcmp: OK !\n\n");
+
+
     /* FT_ISPRINT */
 /*   printf("*************** FT_ISPRINT ***************\n");
    c = 0;
@@ -96,7 +236,7 @@ int			main(void)
        }
    }
    if (!c)
-       printf("ft_toupper: OK !\n\n");//
+       printf("ft_toupper: OK !\n\n");
 
     /* FT_TOLOWER */
    printf("*************** FT_TOLOWER ***************\n");
@@ -148,7 +288,7 @@ int			main(void)
 	printf("[%c][%c][%c][%c][%c][%c][%c][%c][%c][%c][%c][%c][%c][%c]\n",
 			str2[0], str2[1], str2[2], str2[3], str2[4], str2[5], str2[6],
 			str2[7], str2[8], str2[9], str2[10], str2[11], str2[12], str2[13]);
-	printf("%p\n\n", str2);//
+	printf("%p\n\n", str2);
 
     /* FT_STRLEN */
 /*   printf("*************** FT_STRLEN ***************\n");

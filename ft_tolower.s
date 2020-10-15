@@ -5,7 +5,7 @@ global _ft_tolower
 ;					v
 ;				   rdi
 
-section .text:
+section .text
 _ft_tolower:
 	cmp rdi, 65
 	jl _end

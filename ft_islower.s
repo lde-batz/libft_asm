@@ -1,11 +1,11 @@
-global ft_islower
+global _ft_islower
 
 ; int	islower(int c);
 ;					|
 ;					v
 ;				   rdi
 
-section .text:
+section .text
 ft_islower:
 	mov rax, 1
 	cmp byte [rdi], 96

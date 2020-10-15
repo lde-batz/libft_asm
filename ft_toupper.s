@@ -1,11 +1,11 @@
+global _ft_toupper
+
 ; int	toupper(int c);
 ;					|
 ;					v
 ;				   rdi
 
-section .text:
-global _ft_toupper
-
+section .text
 _ft_toupper:
 	cmp rdi, 96
 	jl _end

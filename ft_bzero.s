@@ -5,7 +5,7 @@ global _ft_bzero
 ;				   v		 v
 ;				  rdi		rsi
 
-section .text:
+section .text
 _ft_bzero:
 	cmp rsi, 0			; while(n > 0)
 	je _ret				; if (n == 0) { ret }
