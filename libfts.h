@@ -6,7 +6,7 @@
 /*   By: lde-batz <lde-batz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 21:00:00 by lde-batz          #+#    #+#             */
-/*   Updated: 2020/10/15 16:08:01 by lde-batz         ###   ########.fr       */
+/*   Updated: 2020/10/19 17:42:10 by lde-batz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct	s_list
+{
+	void			*data;
+	struct s_list	*next;
+}				t_list;
 
 size_t	ft_strlen(const char *s);
 
@@ -25,6 +31,12 @@ int		ft_strcmp(const char *s1, const char *s2);
 ssize_t	ft_write(int fd, const void *buf, size_t count);
 
 ssize_t	ft_read(int fd, void *buf, size_t count);
+
+char	*ft_strdup(const char *s);
+
+void	ft_list_push_front(t_list **begin_list, void *data);
+
+int		ft_list_size(t_list *begin_list);
 
 void	ft_bzero(void *s, size_t n);
 

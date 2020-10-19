@@ -21,5 +21,6 @@ _loop:
 	jmp _loop
 
 _end:
+	mov byte [rdi], 0	; *dest = '\0'
 	pop rax				; return l'addr de dest
 	ret

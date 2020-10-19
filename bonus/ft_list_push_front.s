@@ -1,0 +1,26 @@
+global _ft_list_push_front
+
+; void ft_list_push_front(t_list **begin_list, void *data);
+;										|			  |
+;										v			  v
+;									   rdi			 rsi
+section .text
+extern _malloc
+
+_ft_list_push_front:
+	push rdi					; save begin_list
+	push rsi					; save data
+	mov rdi, 16					; new = malloc(16)
+	call _malloc
+	pop rsi
+	pop rdi
+	cmp rax, 0					; if (new == NULL)
+	je _end						; { ret }
+	mov qword[rax], rsi			; *new = data    ->    mov qword[rax+0], rsi
+	mov rbx, [rdi]				; save *begin_list
+	mov qword[rax + 8], rbx		; new->next = *begin_list
+	mov [rdi], rax				; begin_list = &new
+	ret
+
+_end:
+	ret

@@ -7,7 +7,7 @@ global _ft_toupper
 
 section .text
 _ft_toupper:
-	cmp rdi, 96
+	cmp rdi, 97
 	jl _end
 	cmp rdi, 122
 	jg _end
