@@ -1,11 +1,11 @@
-global _ft_tolower
-
 ; int	tolower(int c);
 ;					|
 ;					v
 ;				   rdi
 
 section .text
+global _ft_tolower
+
 _ft_tolower:
 	cmp rdi, 65
 	jl _end

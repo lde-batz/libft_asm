@@ -1,11 +1,11 @@
-global _ft_list_size
-
 ; int ft_list_size(t_list *begin_list);
 ;								|
 ;								v
 ;							   rdi
 
 section .text
+global _ft_list_size
+
 _ft_list_size:
 	mov rcx, 0			; int i = 0
 	jmp _loop

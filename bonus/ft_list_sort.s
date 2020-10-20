@@ -3,16 +3,8 @@
 ;								v				v
 ;							   rdi			   rsi
 
-section .data
-hello:
-	.string db "      ->   Hello!", 10, 0
-prompt:
-	.string db "      ->   Prompt!", 10, 0
-
 section .text
 global _ft_list_sort
-extern _ft_strcmp
-extern _printf
 
 _ft_list_sort:
 	push rdi
@@ -46,7 +38,6 @@ _swap:
 	pop rsi					; reinitialisation de rsi
 	pop rdi					; reinitialisation de rdi
 	jmp _ft_list_sort
-
 
 _end:
 	pop rax					; destack cmp()

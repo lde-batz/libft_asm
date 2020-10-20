@@ -1,11 +1,11 @@
-global _ft_bzero
-
 ; void bzero(void *s, size_t n);
 ;				   |		 |
 ;				   v		 v
 ;				  rdi		rsi
 
 section .text
+global _ft_bzero
+
 _ft_bzero:
 	cmp rsi, 0			; while(n > 0)
 	je _ret				; if (n == 0) { ret }

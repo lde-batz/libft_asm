@@ -1,11 +1,11 @@
-global _ft_strcmp
-
 ; int strcmp(const char *s1, const char *s2);
 ;						  |				 |
 ;						  v				 v
 ;						 rdi			rsi
 
 section .text
+global _ft_strcmp
+
 _ft_strcmp:
 	jmp _loop
 	ret

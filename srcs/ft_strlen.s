@@ -1,11 +1,11 @@
-global _ft_strlen
-
 ; size_t strlen(const char *s);
 ;							|
 ;							v
 ;						   rdi
 
 section .text
+global _ft_strlen
+
 _ft_strlen:
 	mov rcx, 0			; int = 0
 	jmp _loop

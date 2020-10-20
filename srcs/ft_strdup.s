@@ -1,11 +1,10 @@
-global _ft_strdup
-
 ; char *strdup(const char *s);
 ;						   |
 ;						   v
 ;						  rdi
 
 section .text
+global _ft_strdup
 extern _malloc
 extern _ft_strlen
 extern _ft_strcpy

@@ -1,11 +1,11 @@
-global _ft_strcpy
-
 ; char *strcpy(char *dest, const char *src);
 ;					  |					|
 ;					  v					v
 ;					 rdi			   rsi
 
 section .text
+global _ft_strcpy
+
 _ft_strcpy:
 	push rdi			; save l'addr de dest
 	jmp _loop

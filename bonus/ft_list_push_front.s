@@ -1,11 +1,10 @@
-global _ft_list_push_front
-
 ; void ft_list_push_front(t_list **begin_list, void *data);
 ;										|			  |
 ;										v			  v
 ;									   rdi			 rsi
 
 section .text
+global _ft_list_push_front
 extern _malloc
 
 _ft_list_push_front:
