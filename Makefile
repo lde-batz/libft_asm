@@ -6,7 +6,7 @@
 #    By: lde-batz <lde-batz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/25 20:50:34 by lde-batz          #+#    #+#              #
-#    Updated: 2020/10/19 17:52:56 by lde-batz         ###   ########.fr        #
+#    Updated: 2020/10/20 10:33:32 by lde-batz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCB :=	ft_bzero.s \
 		ft_toupper.s \
 		ft_list_push_front.s \
 		ft_list_size.s \
+		ft_list_sort.s \
 
 SRC_DIR := srcs/
 SRCB_DIR := bonus/

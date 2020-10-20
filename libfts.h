@@ -6,7 +6,7 @@
 /*   By: lde-batz <lde-batz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 21:00:00 by lde-batz          #+#    #+#             */
-/*   Updated: 2020/10/19 17:42:10 by lde-batz         ###   ########.fr       */
+/*   Updated: 2020/10/20 11:30:34 by lde-batz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char	*ft_strdup(const char *s);
 void	ft_list_push_front(t_list **begin_list, void *data);
 
 int		ft_list_size(t_list *begin_list);
+
+void	ft_list_sort(t_list **begin_list, int (*cmp)());
 
 void	ft_bzero(void *s, size_t n);
 

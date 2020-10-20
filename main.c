@@ -208,6 +208,27 @@ void		test_strdup(void)
 		printf("ft_strdup: OK !\n\n");
 }
 
+
+void	ft_list_sort2(t_list **lst, int (*cmp)())
+{
+	void	*tempo;
+	t_list	*parcour;
+
+	parcour = *lst;
+	while (parcour->next)
+	{
+		if (((*cmp)(parcour->data, parcour->next->data)) > 0)
+		{
+			tempo = parcour->data;
+			parcour->data = parcour->next->data;
+			parcour->next->data = tempo;
+			parcour = *lst;
+		}
+		else
+			parcour = parcour->next;
+	}
+}
+
 void		test_list_push_front(void)
 {
 	t_list *tlist1 = malloc(sizeof(t_list));
@@ -223,15 +244,13 @@ void		test_list_push_front(void)
 	tlist3->data = "gens!";
 	tlist3->next = NULL;
 
-	printf("list_size = %i\n", ft_list_size(tlist1));
-
 	loop = tlist1;
 	while (loop)
 	{
 		printf("%s", loop->data);
 		loop = loop->next;
 	}
-	printf("\n");
+	printf("     ->    list_size = %i\n", ft_list_size(tlist1));
 	ft_list_push_front(&tlist1, "à tous! ");
 	loop = tlist1;
 	while (loop)
@@ -239,20 +258,49 @@ void		test_list_push_front(void)
 		printf("%s", loop->data);
 		loop = loop->next;
 	}
-	printf("\n");
-	printf("list_size = %i\n", ft_list_size(tlist1));
+	printf("     ->    list_size = %i\n", ft_list_size(tlist1));
 
 	ft_list_push_front(&tlist1, "Bonjour ");
-	printf("list_size = %i\n", ft_list_size(tlist1));
 	loop = tlist1;
 	while (loop)
 	{
-	printf("list_size = %i\n", ft_list_size(loop));
+		printf("%s", loop->data);
+		printf("     ->    list_size = %i\n", ft_list_size(loop));
+		loop = loop->next;
+	}
+	printf("\n");
+}
+
+void		test_list_sort(void)
+{
+	t_list *tlist1 = malloc(sizeof(t_list));
+	t_list *tlist2 = malloc(sizeof(t_list));
+	t_list *tlist3 = malloc(sizeof(t_list));
+	t_list *loop;
+
+	printf("*************** FT_LIST_SORT ***************\n");
+	tlist1->data = "| 5 |";
+	tlist1->next = tlist2;
+	tlist2->data = "| 4 |";
+	tlist2->next = tlist3;
+	tlist3->data = "| 9 |";
+	tlist3->next = NULL;
+	ft_list_push_front(&tlist1, "| 3 |");
+	ft_list_push_front(&tlist1, "| 9 |");
+	loop = tlist1;
+	while (loop)
+	{
 		printf("%s", loop->data);
 		loop = loop->next;
 	}
-	printf("list_size = %i\n", ft_list_size(tlist1));
-
+	printf("\n\n");
+	ft_list_sort(&tlist1, strcmp);
+	loop = tlist1;
+	while (loop)
+	{
+		printf("%s", loop->data);
+		loop = loop->next;
+	}
 	printf("\n\n");
 }
 
@@ -327,6 +375,7 @@ int			main(void)
 
 		/*		BONUS		*/
 	test_list_push_front();
+	test_list_sort();
 	test_toupper();
 	test_tolower();
 	test_bzero();

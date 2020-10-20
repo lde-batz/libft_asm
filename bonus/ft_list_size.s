@@ -4,6 +4,7 @@ global _ft_list_size
 ;								|
 ;								v
 ;							   rdi
+
 section .text
 _ft_list_size:
 	mov rcx, 0			; int i = 0
@@ -12,10 +13,11 @@ _ft_list_size:
 
 _loop:
 	cmp rdi, 0			; while (begin_list != NULL)
-	je _end				; if (begin == NULL) { ret }
-	mov rdi, [rdi + 8]
+	je _end				; if (begin_list == NULL) { ret }
+	mov rdi, [rdi + 8]	; begin_list = begin_list->next
 	inc rcx				; i++
 	jmp _loop
 
 _end:
+	mov rax, rcx		; return (i)
 	ret

@@ -4,6 +4,7 @@ global _ft_strdup
 ;						   |
 ;						   v
 ;						  rdi
+
 section .text
 extern _malloc
 extern _ft_strlen

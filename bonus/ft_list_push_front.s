@@ -4,6 +4,7 @@ global _ft_list_push_front
 ;										|			  |
 ;										v			  v
 ;									   rdi			 rsi
+
 section .text
 extern _malloc
 
@@ -16,9 +17,9 @@ _ft_list_push_front:
 	pop rdi
 	cmp rax, 0					; if (new == NULL)
 	je _end						; { ret }
-	mov qword[rax], rsi			; *new = data    ->    mov qword[rax+0], rsi
+	mov [rax], rsi				; *new = data    ->    mov [rax+0], rsi
 	mov rbx, [rdi]				; save *begin_list
-	mov qword[rax + 8], rbx		; new->next = *begin_list
+	mov [rax + 8], rbx			; new->next = *begin_list
 	mov [rdi], rax				; begin_list = &new
 	ret
 
