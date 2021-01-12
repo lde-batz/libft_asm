@@ -5,8 +5,16 @@
 
 section .text
 global _ft_read
+extern  ___error
 
 _ft_read:
 	mov rax, 0x2000003
-	syscall 
+	syscall
+	jc _end
+	ret
+_end:
+	mov r10, rax
+	call ___error
+	mov qword [rax], r10
+	mov rax, -1
 	ret

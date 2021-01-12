@@ -19,7 +19,7 @@ _ft_list_push_front:
 	mov [rax], rsi				; *new = data    ->    mov [rax+0], rsi
 	mov rbx, [rdi]				; save *begin_list
 	mov [rax + 8], rbx			; new->next = *begin_list
-	mov [rdi], rax				; begin_list = &new
+	mov [rdi], rax				; *begin_list = new
 	ret
 
 _end:

@@ -7,22 +7,38 @@ section .text
 global _ft_strcmp
 
 _ft_strcmp:
-	jmp _loop
+	mov	r8, rdi
+	or	r8, rsi				; if (!s1 && !s2)
+	cmp	r8, 0				; return 0
+	je	equal
+
+cmp_loop:
+	mov	r8, [rdi]
+	cmp	r8, 0				; if (*s1 == '\0')
+	je	bcmp
+	cmp	byte [rsi], 0		; if (*s2 == '\0')
+	je	bcmp
+	cmp	r8b, byte [rsi]		; if (*s1 == *s2)
+	ja	greater				; if (*s1 > *s2)
+	jb	lower				; if (*s1 < *s2)
+	inc	rdi					; s1++
+	inc	si					; s2++
+	jmp	cmp_loop			
+
+bcmp:
+	cmp	r8b, byte [rsi]
+	ja	greater				; if (*s1 > *s2)
+	jb	lower				; if (*s1 < *s2)
+	je	equal				; if (*s1 == *s2)
+
+equal:
+	mov	rax, 0				; return 0
 	ret
 
-_loop:
-	mov al, byte [rdi]	; char c1 = *s1
-	mov bl, byte [rsi]	; char c2 = *s2
-	cmp al, bl			; if (c1 != c2) 
-	jne _end			; { ret }
-	cmp byte [rdi], 0	; while (s1 != '\0')
-	je _end				; if (s1 == '\0') { ret }
-	cmp byte [rsi], 0	; while (s2 != '\0')
-	je _end				; if (s2 == '\0') { ret }
-	inc rdi				; s1++
-	inc rsi				; s2++
-	jmp _loop
+greater:
+	mov	rax, 1				; return 1
+	ret
 
-_end:
-	sub rax, rbx		; return (c1 - c2)
+lower:
+	mov	rax, -1				; return -1
 	ret

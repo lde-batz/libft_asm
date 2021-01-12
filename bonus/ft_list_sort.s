@@ -5,24 +5,27 @@
 
 section .text
 global _ft_list_sort
+extern _printf
 
 _ft_list_sort:
 	push rdi
 	push rsi
+	cmp	rdi, 0				; if (begin_list == NULL)
+	je	_end				; return NULL
 	mov rdi, [rdi]
-	jmp _loop
-	ret
+	cmp	rdi, 0				; if (*begin_list == NULL)
+	je	_end				; return NULL
 
 _loop:
 	mov rsi, [rdi + 8]
 	cmp rsi, 0				; while (list->next != NULL)
-	je _end					; if (list == NULL) { _end }
+	je _end					; if (list->next == NULL) { _end }
 	push rdi				; save list
 	mov rsi, [rsi]			; arg2 = list->next->data		
 	mov rdi, [rdi]			; arg1 = list->data
 	call [rsp + 8]			; ret_cmp = cmp(arg1, arg2)
 	pop rdi					; list = list
-	cmp rax, 0				; if (ret_cmp > 0)
+	cmp eax, 0				; if (ret_cmp > 0)
 	jg _swap				; { _swap }
 	mov rdi, [rdi + 8]		; list = list->next
 	jmp _loop
