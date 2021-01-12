@@ -461,6 +461,14 @@ void test_atoi(void)
 	printf("\n");
 }
 
+void test_putstr(void)
+{
+	printf("*************** FT_PUTSTR ***************\n");
+	ft_putstr("coucou les gens!!!\n");
+	ft_putstr("\v\t   yuef956=/*-+\\!@#$%^&*()_+\n");
+	ft_putstr("\n");
+}
+
 int			main(void)
 {
 //	test_strlen();
@@ -478,4 +486,5 @@ int			main(void)
 	test_tolower();
 	test_bzero();
 	test_atoi();
+	test_putstr();
 }
