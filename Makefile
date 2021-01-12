@@ -6,7 +6,7 @@
 #    By: lde-batz <lde-batz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/25 20:50:34 by lde-batz          #+#    #+#              #
-#    Updated: 2021/01/12 11:19:04 by lde-batz         ###   ########.fr        #
+#    Updated: 2021/01/12 16:43:48 by lde-batz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,16 +30,18 @@ SRC :=	ft_strlen.s \
 		ft_read.s \
 		ft_strdup.s \
 
-SRCB :=	ft_list_push_front.s \
+SRCB :=	ft_atoi_base.s \
+		ft_list_push_front.s \
 		ft_list_size.s \
 		ft_list_sort.s \
 		ft_list_remove_if.s \
-		ft_atoi_base.s \
+		ft_atoi.s \
 		ft_bzero.s \
+		ft_isdigit.s \
+		ft_isspace.s \
+		ft_putstr.s \
 		ft_tolower.s \
 		ft_toupper.s \
-		ft_isspace.s \
-		ft_atoi_base.s \
 
 SRC_DIR := srcs/
 SRCB_DIR := bonus/
@@ -90,10 +92,6 @@ re : fclean all
 
 main : $(NAME)
 	gcc -Wall -Wextra main.c -I libfts.h -L ./ -lasm -o main_test
-
-main2 : $(NAME)
-	gcc -Wall -Wextra main2.c -I libfts.h -L ./ -lasm -o main_test
-
 
 mclean :
 	rm -rf main_test

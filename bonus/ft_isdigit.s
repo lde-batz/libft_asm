@@ -1,20 +1,18 @@
-; int isspace(int c)
+; int isdigit(int c)
 ;				  |
 ;				  v
 ;				 rdi
 
 section .text
-global _ft_isspace
+global _ft_isdigit
 
-_ft_isspace:
+_ft_isdigit:
 	push rbp
 	mov rbp, rsp
 
-	cmp rdi, 32
-	je _equal
-	cmp rdi, 9
+	cmp rdi, 48
 	jl _different
-	cmp rdi, 13
+	cmp rdi, 57
 	jg _different
 
 _equal:

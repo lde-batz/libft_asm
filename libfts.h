@@ -6,7 +6,7 @@
 /*   By: lde-batz <lde-batz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 21:00:00 by lde-batz          #+#    #+#             */
-/*   Updated: 2021/01/12 11:19:27 by lde-batz         ###   ########.fr       */
+/*   Updated: 2021/01/12 17:06:57 by lde-batz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,18 @@ void	ft_list_sort(t_list **begin_list, int (*cmp)());
 
 void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)());
 
+int		ft_atoi(char *str);
+
 void	ft_bzero(void *s, size_t n);
+
+int		ft_isdigit(int c);
+
+int		ft_isspace(int c);
+
+void	ft_putstr(char *str);
 
 int		ft_tolower(int c);
 
 int		ft_toupper(int c);
-
-int		ft_isspace(int c);
 
 #endif
